@@ -1,7 +1,7 @@
-# DSA-Resources
-Curated DSA Content
+# DSA and Web Development-Resources
+Curated DSA and Web Development Content
 
-The Repository Conatins Famous DSA Problems and Best Course Materials 
+The Repository Conatins Famous DSA Problems and Best Course Materials and Web Development Projects
 
 
 # 🌟Getting started
