@@ -1,0 +1,98 @@
+public class RatMazeProblem   
+{  
+static int R;  
+static int C;  
+void displaySolution(int result[][])  
+{  
+System.out.println("The resultant matrix is: ");  
+for (int r = 0; r < R; r++)   
+{  
+for (int c = 0; c < C; c++)  
+{  
+System.out.print(" " + result[r][c] + " ");  
+}  
+  
+System.out.println();  
+}  
+}  
+boolean isValid(int maze[][], int r, int c)  
+{  
+return (r >= 0 && r < R && c >= 0 && c < C && maze[r][c] == 0);  
+}  
+boolean findPathMaze(int maze[][])  
+{  
+int maz[][] = new int[R][C];  
+for(int r = 0; r < R; r++)  
+{  
+for(int c = 0; c < C; c++)  
+{  
+maz[r][c] = 1;  
+}  
+}  
+  
+  
+if (solveMazeUtility(maze, 0, 0, maz) == false)   
+{  
+System.out.print("Path from source to destination doesn't exist");  
+return false;  
+}  
+  
+displaySolution(maz);  
+return true;  
+}    
+boolean solveMazeUtility(int maze[][], int r, int c,  
+        int res[][])  
+{  
+if (r == R - 1 && c == C - 1 && maze[r][c] == 0)   
+{  
+res[r][c] = 0;  
+return true;  
+}  
+if (isValid(maze, r, c) == true)   
+{   
+if (res[r][c] == 0)  
+{  
+return false;  
+}  
+  
+
+res[r][c] = 0;  
+  
+   
+if (solveMazeUtility(maze, r + 1, c, res))  
+{  
+return true;  
+}  
+if (solveMazeUtility(maze, r, c + 1, res))  
+{  
+return true;  
+}  
+if (solveMazeUtility(maze, r - 1, c, res))  
+{  
+return true;  
+}   
+if (solveMazeUtility(maze, r, c - 1, res))  
+{  
+return true;  
+}  
+res[r][c] = 1;  
+return false;  
+}  
+return false;  
+}  
+ 
+public static void main(String argvs[])  
+{  
+
+RatMazeProblem r = new RatMazeProblem();  
+
+int maze[][] = { { 0, 1, 1, 1 },  
+               { 0, 0, 1, 0 },  
+               { 1, 0, 1, 1 },  
+               { 0, 0, 0, 0 } };  
+  
+R = maze.length;  
+C = maze[0].length;  
+r.findPathMaze(maze);  
+}  
+}  
